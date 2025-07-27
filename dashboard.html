@@ -1,0 +1,81 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Dashboard | EventPro</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">EventPro</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="dashboard.html" class="active">Dashboard</a></li>
+          <li><a href="login.html">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="dashboard">
+    <div class="container">
+      <h2 class="section-title">My Bookings</h2>
+
+      <div class="booking-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Event</th>
+              <th>Date</th>
+              <th>Location</th>
+              <th>Tickets</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Music Concert</td>
+              <td>Aug 30, 2025</td>
+              <td>Mumbai</td>
+              <td>2</td>
+              <td><span class="status confirmed">Confirmed</span></td>
+              <td><button class="btn-cancel">Cancel</button></td>
+            </tr>
+            <tr>
+              <td>Startup Meetup</td>
+              <td>Sep 5, 2025</td>
+              <td>Bengaluru</td>
+              <td>1</td>
+              <td><span class="status confirmed">Confirmed</span></td>
+              <td><button class="btn-cancel">Cancel</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 EventPro. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const cancelBtns = document.querySelectorAll('.btn-cancel');
+    cancelBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const confirmCancel = confirm("Are you sure you want to cancel this booking?");
+        if (confirmCancel) {
+          alert("Booking cancelled.");
+          btn.closest('tr').remove();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

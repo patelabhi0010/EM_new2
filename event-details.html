@@ -1,0 +1,105 @@
+<!-- event-details.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Event Details | EventPro</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">EventPro</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="event-details">
+    <div class="container">
+      <div class="details-wrapper">
+        <div class="details-image">
+          <img src="" alt="Event Image" id="event-image" />
+        </div>
+        <div class="details-content" id="event-content">
+          <!-- Dynamic content will be injected here -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 EventPro. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const event = params.get('event');
+
+    const details = {
+      music: {
+        title: "Music Concert - Night Live",
+        date: "August 30, 2025",
+        time: "7:00 PM – 11:00 PM",
+        location: "GTU-ITR, Mehsana, Gujarat, India",
+        description: "Join us for a thrilling night of music, lights, and energy. Top artists from across the country will perform live. Food stalls, VIP areas, and meet-and-greet included!",
+        image: "https://www.ballerstatus.com/wp-content/uploads/2022/04/pexels-thibault-trillet-167636.jpg"
+      },
+      startup: {
+        title: "Startup Meetup - Innovate India",
+        date: "September 5, 2025",
+        time: "10:00 AM – 4:00 PM",
+        location: "gujarat, India",
+        description: "Meet startup founders, investors, and innovators. Panels, networking, and startup showcase.",
+        image: "https://hitecher.com/storage/img/20190423/b02cc119884b11db44f6.jpg"
+      },
+      food: {
+        title: "Food Festival - Taste the World",
+        date: "September 12, 2025",
+        time: "12:00 PM – 9:00 PM",
+        location: "Ahmedabad, India",
+        description: "Explore delicious cuisines from across India and the world. Cooking demos, contests, and live music.",
+        image: "https://embassyvallettahotel.com/wp-content/uploads/2023/04/food.jpg"
+      }
+    };
+
+    const current = details[event] || details.music; // fallback to music if no match
+    document.getElementById('event-image').src = current.image;
+    document.getElementById('event-content').innerHTML = `
+      <h2>${current.title}</h2>
+      <p><strong>Date:</strong> ${current.date}</p>
+      <p><strong>Time:</strong> ${current.time}</p>
+      <p><strong>Location:</strong> ${current.location}</p>
+      <p><strong>Description:</strong> ${current.description}</p>
+      <form class="booking-form">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" placeholder="Your name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="you@example.com" required>
+
+        <label for="tickets">Number of Tickets:</label>
+        <input type="number" id="tickets" min="1" value="1" required>
+
+        <button type="submit" class="btn">Book Now</button>
+      </form>
+    `;
+
+    document.body.addEventListener('submit', function(e) {
+      if (e.target.matches('.booking-form')) {
+        e.preventDefault();
+        alert('Your tickets have been booked! 🎉');
+        e.target.reset();
+      }
+    });
+  </script>
+</body>
+</html>

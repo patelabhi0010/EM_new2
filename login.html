@@ -1,0 +1,46 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | EventPro</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <section class="auth-page">
+    <div class="auth-container">
+      <h2>Login to EventPro</h2>
+
+      <form class="auth-form">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="********" required />
+
+        <button type="submit" class="btn">Login</button>
+      </form>
+
+      <div class="social-login">
+        <p>Or login with</p>
+        <div class="social-buttons">
+          <button class="google-btn">Google</button>
+          <button class="facebook-btn">Facebook</button>
+        </div>
+      </div>
+
+      <p class="auth-switch">Don't have an account? <a href="register.html">Register here</a></p>
+    </div>
+  </section>
+
+  <script>
+    const loginForm = document.querySelector('.auth-form');
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("Login submitted!");
+      loginForm.reset();
+    });
+  </script>
+</body>
+</html>
